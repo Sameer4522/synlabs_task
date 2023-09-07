@@ -56,7 +56,7 @@ const CustomPagination: React.FC<Props> = ({
   const classes = useStyles();
 
   const handlePageChange = (
-    event: React.ChangeEvent<unknown>,
+    _event: React.ChangeEvent<unknown>,
     page: number
   ) => {
     onPageChange(page);
