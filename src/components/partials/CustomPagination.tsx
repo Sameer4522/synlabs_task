@@ -9,7 +9,7 @@ interface Props {
   onPageChange: (page: number) => void;
 }
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
     "& .MuiPaginationItem-root": {
       backgroundColor: "#fff",
