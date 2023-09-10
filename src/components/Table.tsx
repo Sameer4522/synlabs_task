@@ -36,6 +36,21 @@ const Table: React.FC<props> = ({
     setCurrentPage(pageNumber);
   };
 
+  // when dropdown opens it should set the data to modals state and vice versa
+  const onDropdownOpenChange = (open: boolean, user: any) => {
+    if (open) {
+      setModals((prevData) => ({
+        ...prevData,
+        data: user,
+      }));
+    } else if (!open) {
+      setModals((prevData) => ({
+        ...prevData,
+        data: null,
+      }));
+    }
+  };
+
   // menu Items
   const items: MenuProps["items"] = [
     {
@@ -124,15 +139,13 @@ const Table: React.FC<props> = ({
                     {user?.company.name ? user?.company.name : "-"}
                   </td>
                   <td className="font-medium py-3 text-start px-6 flex gap-4 items-center">
-                    <Dropdown menu={{ items }} trigger={["click"]}>
+                    <Dropdown
+                      menu={{ items }}
+                      trigger={["click"]}
+                      onOpenChange={(open) => onDropdownOpenChange(open, user)}
+                    >
                       <IoMdSettings
                         size={26}
-                        onClick={() => {
-                          setModals((prevData) => ({
-                            ...prevData,
-                            data: user,
-                          }));
-                        }}
                         className=" text-primary hover:text-opacity-70 transition duration-150 cursor-pointer"
                       />
                     </Dropdown>
